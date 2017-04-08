@@ -1,12 +1,9 @@
 package com.example.icaro.testeprototipo;
 
-import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -21,21 +18,19 @@ import org.apache.http.client.methods.HttpGet;
 
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import org.apache.http.params.CoreProtocolPNames;
-
-import com.firebase.client.Firebase;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URI;
-import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback,
                                                         GoogleMap.OnMapClickListener{
     private GoogleMap mMap;
+    private Enderecos[] lista;
 
 
     @Override
@@ -59,15 +54,10 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        String url = "http://192.168.0.102:3000/Data";
-        System.out.println(url);
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        //String url = "http://192.168.43.224:3000/Data";
+        String url = "http://192.168.43.195:8080/lista/home/jsonContatos";
         getJson(url);
+        //System.out.println(url);
 
         //LatLng cordenadas = new LatLng(-19.5515, -43.5616);
         //MarkerOptions marker = new MarkerOptions();
@@ -98,22 +88,33 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
                     InputStream content = response.getEntity().getContent();
                     Reader reader = new InputStreamReader(content);
                     Gson gson = new Gson();
-                    Enderecos[] lista = gson.fromJson(reader, Enderecos[].class);
+                    lista = gson.fromJson(reader, Enderecos[].class);
+                    //List<Enderecos> lista = (List<Enderecos>) gson.fromJson(reader, Enderecos.class);
                     //retorno = gson.fromJson(reader, ArrayList<Enderecos>.class);
-                    for(int i = 0; i<lista.length ; i++){
-                        Enderecos end = new Enderecos();
-
-                        LatLng cordenadas = new LatLng(lista[Integer.parseInt("lat")].getLat(), lista[Integer.parseInt("lng")].getLng());
-                        MarkerOptions marker = new MarkerOptions();
-                        marker.position(cordenadas);
-                        marker.title(lista[Integer.parseInt("nome")].getNome());
-                        mMap.addMarker(marker);
-                    }
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            marcarMapa(lista);
+                        }
+                    });
                     content.close();
+
+
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    private  void marcarMapa(Enderecos[] lista){
+
+        for (Enderecos endereco : lista) {
+            LatLng cordenadas = new LatLng(endereco.getLat(), endereco.getLng());
+            MarkerOptions marker = new MarkerOptions();
+            marker.position(cordenadas);
+            marker.title(endereco.getNome());
+            mMap.addMarker(marker);
+        }
     }
 }
