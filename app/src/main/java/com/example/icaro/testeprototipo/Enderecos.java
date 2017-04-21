@@ -11,7 +11,7 @@ public class Enderecos {
     private String nome;
     private double lat;
     private double lng;
-    private String gayfaghn1er;
+    private String gayfagh1n1er;
 
     public String getNome(){
         return nome;
