@@ -62,7 +62,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         //LatLng cordenadas = new LatLng(-19.5515, -43.5616);
         //MarkerOptions marker = new MarkerOptions();
         //marker.position(cordenadas);
-        //marker.title("Borracheiro");
+        //marker.title("Borracheiro");String url = "http://192.168.43.195:8080/lista/home/jsonContatos";
+        getJson(url);
         //mMap.addMarker(marker);
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(bh));
