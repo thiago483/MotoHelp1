@@ -1,9 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.icaro.testeprototipo.PerguntasActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/colorAccent"
+                android:text="Você usa moto para que?"
+                android:textColor="@android:color/background_dark" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Trabalhar"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Passeio"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Corrida"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorAccent"
+                android:text="texto"
+                android:textColor="@android:color/background_dark" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="RadioButon1"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorAccent"
+                android:text="texto"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="RadioButon1"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorAccent"
+                android:text="texto"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="RadioButon1"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
