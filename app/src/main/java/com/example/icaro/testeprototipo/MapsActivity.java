@@ -67,6 +67,8 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
         //mMap.addMarker(marker);
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(bh));
+        
+        //Teste de commit
 
     }
 
