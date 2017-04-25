@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by icaro on 06/04/2017.
- */
+ */  //teste
 
 public class Enderecos {
     @SerializedName("Nome")
